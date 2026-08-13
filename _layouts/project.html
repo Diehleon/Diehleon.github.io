@@ -1,0 +1,65 @@
+---
+layout: default
+---
+<div class="wrap">
+  <p class="backlink">
+    <a href="{% if page.collection == 'pcb' %}{{ '/pcb/' | relative_url }}{% else %}{{ '/projects/' | relative_url }}{% endif %}">← All {{ page.kind | downcase }}s</a>
+  </p>
+
+  <header class="pagehead">
+    <p class="eyebrow"><span class="desig">{{ page.designator }}</span>{% if page.status %} · {{ page.status }}{% endif %}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.summary %}<p class="lede">{{ page.summary }}</p>{% endif %}
+  </header>
+
+  {% if page.cover %}
+    <figure class="hero-img">
+      <img src="{{ page.cover | relative_url }}" alt="{{ page.title }}">
+    </figure>
+  {% endif %}
+
+  <div class="detail">
+    <aside class="specs">
+      <h2 class="specs__head">Specifications</h2>
+      <dl>
+        {% if page.date %}<dt>Date</dt><dd>{{ page.date | date: "%b %Y" }}</dd>{% endif %}
+        {% if page.mcu %}<dt>MCU</dt><dd>{{ page.mcu }}</dd>{% endif %}
+        {% if page.layers %}<dt>Layers</dt><dd>{{ page.layers }}</dd>{% endif %}
+        {% if page.dimensions %}<dt>Size</dt><dd>{{ page.dimensions }}</dd>{% endif %}
+        {% if page.toolchain %}<dt>Toolchain</dt><dd>{{ page.toolchain }}</dd>{% endif %}
+        {% if page.eda %}<dt>EDA</dt><dd>{{ page.eda }}</dd>{% endif %}
+        {% for row in page.specs %}<dt>{{ row.label }}</dt><dd>{{ row.value }}</dd>{% endfor %}
+      </dl>
+
+      {% if page.tags %}
+        <ul class="tags">
+          {% for tag in page.tags %}<li>{{ tag }}</li>{% endfor %}
+        </ul>
+      {% endif %}
+
+      <div class="specs__links">
+        {% if page.repo %}<a class="btn btn--ghost" href="{{ page.repo }}">Source repo</a>{% endif %}
+        {% if page.gerbers %}<a class="btn btn--ghost" href="{{ page.gerbers | relative_url }}">Gerbers</a>{% endif %}
+        {% if page.demo %}<a class="btn btn--ghost" href="{{ page.demo }}">Live demo</a>{% endif %}
+      </div>
+    </aside>
+
+    <article class="prose">
+      {{ content }}
+    </article>
+  </div>
+
+  {% if page.gallery %}
+    <section class="gallery">
+      <h2 class="section__label">Gallery</h2>
+      <div class="gallery__grid">
+        {% for shot in page.gallery %}
+          <figure>
+            <img src="{{ shot.src | relative_url }}" alt="{{ shot.caption }}" loading="lazy">
+            {% if shot.caption %}<figcaption class="meta">{{ shot.caption }}</figcaption>{% endif %}
+          </figure>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+</div>

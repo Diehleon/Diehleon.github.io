@@ -1,0 +1,79 @@
+---
+layout: default
+title: Home
+---
+
+<section class="hero">
+  <svg class="trace" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g class="trace__lines">
+      <path d="M -20 60 H 180 L 240 120 H 460 L 500 160 H 900" />
+      <path d="M -20 200 H 120 L 190 270 H 520 L 560 230 H 1220" />
+      <path d="M -20 340 H 300 L 360 280 H 700 L 760 340 H 1220" />
+      <path d="M 240 120 V 268" />
+      <path d="M 760 340 V 162" />
+    </g>
+    <g class="trace__pads">
+      <circle cx="240" cy="120" r="7" /><circle cx="500" cy="160" r="7" />
+      <circle cx="190" cy="270" r="7" /><circle cx="560" cy="230" r="7" />
+      <circle cx="360" cy="280" r="7" /><circle cx="760" cy="340" r="7" />
+    </g>
+  </svg>
+
+  <div class="wrap hero__inner">
+    <p class="eyebrow">{{ site.location }}</p>
+    <h1 class="hero__name">{{ site.name }}</h1>
+    <p class="hero__tagline">{{ site.tagline }}</p>
+    <p class="hero__blurb">
+      I design and build the whole stack of a device — schematic capture, board layout,
+      bring-up, and the firmware that runs on it. Everything below has been soldered,
+      flashed, and made to actually work.
+    </p>
+    <div class="hero__cta">
+      <a class="btn btn--solid" href="{{ '/projects/' | relative_url }}">See the work</a>
+      <a class="btn btn--ghost" href="{{ '/contact/' | relative_url }}">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+{% assign featured_projects = site.projects | sort: "date" | reverse %}
+{% if featured_projects.size > 0 %}
+<section class="wrap band">
+  <div class="section__head">
+    <h2 class="section__label">Selected projects</h2>
+    <a class="section__more" href="{{ '/projects/' | relative_url }}">All projects →</a>
+  </div>
+  <div class="grid">
+    {% for item in featured_projects limit: 3 %}{% include card.html item=item %}{% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% assign featured_boards = site.pcb | sort: "date" | reverse %}
+{% if featured_boards.size > 0 %}
+<section class="wrap band">
+  <div class="section__head">
+    <h2 class="section__label">Boards</h2>
+    <a class="section__more" href="{{ '/pcb/' | relative_url }}">All boards →</a>
+  </div>
+  <div class="grid">
+    {% for item in featured_boards limit: 3 %}{% include card.html item=item %}{% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section class="wrap band">
+  <div class="capabilities">
+    <div>
+      <h3>Firmware</h3>
+      <p class="meta">Bare-metal and RTOS work on AVR, STM32 and ESP32 — drivers, protocol stacks, low-power design.</p>
+    </div>
+    <div>
+      <h3>Hardware</h3>
+      <p class="meta">Schematic capture through to fabrication-ready gerbers: power supplies, mixed-signal, RF-adjacent layout.</p>
+    </div>
+    <div>
+      <h3>Bring-up</h3>
+      <p class="meta">Scope in one hand, logic analyser in the other. Debugging boards until the failure mode makes sense.</p>
+    </div>
+  </div>
+</section>

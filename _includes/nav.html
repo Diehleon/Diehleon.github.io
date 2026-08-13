@@ -1,0 +1,19 @@
+<header class="nav">
+  <a class="nav__mark" href="{{ '/' | relative_url }}">
+    <span class="nav__pad" aria-hidden="true"></span>
+    {{ site.name }}
+  </a>
+
+  <input type="checkbox" id="nav-toggle" class="nav__checkbox">
+  <label for="nav-toggle" class="nav__burger" aria-hidden="true">
+    <span></span><span></span><span></span>
+  </label>
+
+  <nav class="nav__links" aria-label="Main">
+    <a href="{{ '/projects/' | relative_url }}"{% if page.url contains '/projects' %} aria-current="page"{% endif %}>Projects</a>
+    <a href="{{ '/pcb/' | relative_url }}"{% if page.url contains '/pcb' %} aria-current="page"{% endif %}>PCB</a>
+    <a href="{{ '/about/' | relative_url }}"{% if page.url contains '/about' %} aria-current="page"{% endif %}>About</a>
+    <a href="{{ '/resume/' | relative_url }}"{% if page.url contains '/resume' %} aria-current="page"{% endif %}>Resume</a>
+    <a href="{{ '/contact/' | relative_url }}"{% if page.url contains '/contact' %} aria-current="page"{% endif %}>Contact</a>
+  </nav>
+</header>

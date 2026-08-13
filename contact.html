@@ -1,0 +1,57 @@
+---
+layout: default
+title: Contact
+permalink: /contact/
+---
+<div class="wrap">
+  <header class="pagehead">
+    <p class="eyebrow">Say hello</p>
+    <h1>Contact</h1>
+    <p class="lede">Open to hardware and firmware work, collaborations, and questions about anything on this site. Email is the fastest route.</p>
+  </header>
+
+  <ul class="contact">
+    {% if site.email %}
+    <li>
+      <a href="mailto:{{ site.email }}">
+        <span class="contact__label">Email</span>
+        <span class="contact__value">{{ site.email }}</span>
+      </a>
+    </li>
+    {% endif %}
+    {% if site.social.github %}
+    <li>
+      <a href="https://github.com/{{ site.social.github }}">
+        <span class="contact__label">GitHub</span>
+        <span class="contact__value">@{{ site.social.github }}</span>
+      </a>
+    </li>
+    {% endif %}
+    {% if site.social.linkedin %}
+    <li>
+      <a href="https://linkedin.com/in/{{ site.social.linkedin }}">
+        <span class="contact__label">LinkedIn</span>
+        <span class="contact__value">/in/{{ site.social.linkedin }}</span>
+      </a>
+    </li>
+    {% endif %}
+    {% if site.social.youtube %}
+    <li>
+      <a href="https://youtube.com/@{{ site.social.youtube }}">
+        <span class="contact__label">YouTube</span>
+        <span class="contact__value">@{{ site.social.youtube }}</span>
+      </a>
+    </li>
+    {% endif %}
+    {% if site.social.instagram %}
+    <li>
+      <a href="https://instagram.com/{{ site.social.instagram }}">
+        <span class="contact__label">Instagram</span>
+        <span class="contact__value">@{{ site.social.instagram }}</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+
+  <p class="meta contact__note">Based in {{ site.location }}. Replies usually land within a day or two.</p>
+</div>

@@ -1,0 +1,66 @@
+# ─────────────────────────────────────────────
+#  EDIT THIS BLOCK — it controls the whole site
+# ─────────────────────────────────────────────
+name:        "Diehleon"
+tagline:     "Embedded systems & hardware design"
+description: "Portfolio of embedded firmware, electronics and PCB design work."
+email:       "you@example.com"
+location:    "Iligan, Philippines"
+
+# Your links. Delete any line you don't want shown.
+social:
+  github:   "Diehleon"
+  linkedin: ""
+  youtube:  ""
+  instagram: ""
+
+# Set to your resume file in assets/files/ (or leave "" to hide the button)
+resume_pdf: ""
+
+# ─────────────────────────────────────────────
+#  Site plumbing — you rarely need to touch this
+# ─────────────────────────────────────────────
+url: "https://Diehleon.github.io"
+baseurl: ""
+
+markdown: kramdown
+kramdown:
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+  pcb:
+    output: true
+    permalink: /pcb/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+      kind: "Project"
+  - scope:
+      path: ""
+      type: "pcb"
+    values:
+      layout: "project"
+      kind: "Board"
+  - scope:
+      path: ""
+    values:
+      layout: "page"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor

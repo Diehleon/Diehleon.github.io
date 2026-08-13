@@ -1,0 +1,21 @@
+---
+layout: default
+title: Projects
+permalink: /projects/
+---
+<div class="wrap">
+  <header class="pagehead">
+    <p class="eyebrow">Index</p>
+    <h1>Projects</h1>
+    <p class="lede">Firmware, tools and complete devices. Each entry lists what it does, how it was built, and what broke along the way.</p>
+  </header>
+
+  {% assign items = site.projects | sort: "date" | reverse %}
+  {% if items.size > 0 %}
+    <div class="grid">
+      {% for item in items %}{% include card.html item=item %}{% endfor %}
+    </div>
+  {% else %}
+    <p class="empty">No projects published yet. Add a Markdown file to <code>_projects/</code> to see it here.</p>
+  {% endif %}
+</div>

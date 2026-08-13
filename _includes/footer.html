@@ -1,0 +1,16 @@
+<footer class="footer">
+  <div class="footer__rule" aria-hidden="true"></div>
+  <div class="footer__grid">
+    <div>
+      <p class="footer__name">{{ site.name }}</p>
+      <p class="meta">{{ site.location }}</p>
+    </div>
+    <div class="footer__links">
+      {% if site.social.github %}<a href="https://github.com/{{ site.social.github }}">GitHub</a>{% endif %}
+      {% if site.social.linkedin %}<a href="https://linkedin.com/in/{{ site.social.linkedin }}">LinkedIn</a>{% endif %}
+      {% if site.social.youtube %}<a href="https://youtube.com/@{{ site.social.youtube }}">YouTube</a>{% endif %}
+      {% if site.email %}<a href="mailto:{{ site.email }}">Email</a>{% endif %}
+    </div>
+  </div>
+  <p class="footer__fine meta">Built with Jekyll · Hosted on GitHub Pages · REV {{ 'now' | date: "%Y.%m" }}</p>
+</footer>

@@ -1,0 +1,21 @@
+---
+layout: default
+title: PCB
+permalink: /pcb/
+---
+<div class="wrap">
+  <header class="pagehead">
+    <p class="eyebrow">Index</p>
+    <h1>Boards</h1>
+    <p class="lede">Board designs from first schematic to fabricated hardware — layer counts, stack-ups, and the revisions it took to get there.</p>
+  </header>
+
+  {% assign items = site.pcb | sort: "date" | reverse %}
+  {% if items.size > 0 %}
+    <div class="grid">
+      {% for item in items %}{% include card.html item=item %}{% endfor %}
+    </div>
+  {% else %}
+    <p class="empty">No boards published yet. Add a Markdown file to <code>_pcb/</code> to see it here.</p>
+  {% endif %}
+</div>

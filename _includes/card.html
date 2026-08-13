@@ -1,0 +1,19 @@
+<a class="card" href="{{ include.item.url | relative_url }}">
+  <div class="card__top">
+    <span class="desig">{{ include.item.designator }}</span>
+    {% if include.item.status %}<span class="status status--{{ include.item.status | downcase | replace: ' ', '-' }}">{{ include.item.status }}</span>{% endif %}
+  </div>
+
+  {% if include.item.cover %}
+    <div class="card__img"><img src="{{ include.item.cover | relative_url }}" alt="" loading="lazy"></div>
+  {% endif %}
+
+  <h3 class="card__title">{{ include.item.title }}</h3>
+  <p class="card__summary">{{ include.item.summary }}</p>
+
+  {% if include.item.tags %}
+    <ul class="tags">
+      {% for tag in include.item.tags %}<li>{{ tag }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+</a>
